@@ -68,18 +68,14 @@ public class Payment {
 
 
 					// buttons
-					output += "<td><input name=\"btnUpdate\" type=\"button\"        "
-							+ "value=\"Update\" class=\"btn btn-secondary\"></td>"
-							+ "<td><form method=\"post\" action=\"items.jsp\">"
-							+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"      "
-							+ "class=\"btn btn-danger\">" + "<input name=\"itemID\" type=\"hidden\" value=\"" + paymentId
-							+ "\">" + "</form></td></tr>";
+					output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td>"
+					  		+ "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-paymentId='"+ paymentId +"'>"+"</td></tr>";
 				}
 
 				con.close();
 
 				// Complete the html table
-				output += "</table>";
+				output += "</table>"; 
 				
 			} catch (Exception e) {
 				output = "Error while reading the payments.";
@@ -90,7 +86,7 @@ public class Payment {
 
 		}
 		
-		//Insert appointment
+		//Insert payment
 		public String insertPayment(String paymentId,String docName, String patiName, String docCharges, String booknCharges,String hosptlCharges, String pharmBill) {
 			String output = "";
 
@@ -136,7 +132,7 @@ public class Payment {
 		
 		
 		
-		//Update appointment
+		//Update payment
 		public String updatePayment(String paymentId,String docName, String patiName, String docCharges, String booknCharges,String hosptlCharges, String pharmBill) {
 			String output = "";
 
@@ -179,7 +175,7 @@ public class Payment {
 		  return output;  
 		  }
 		
-		public String deleteAppointment(String paymentId) {  
+		public String deletePayment(String paymentId) {  
 			String output = ""; 
 		 
 		 try  {   
@@ -190,7 +186,7 @@ public class Payment {
 		  } 
 		 
 		  // create a prepared statement   
-		  String query = "DELETE FROM appointment WHERE appID=?"; 
+		  String query = "DELETE FROM payment WHERE paymentId=?"; 
 		 
 		  PreparedStatement preparedStmt = con.prepareStatement(query); 
 		 

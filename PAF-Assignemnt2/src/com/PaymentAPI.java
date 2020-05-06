@@ -16,7 +16,7 @@ import model.Payment;;
 /**
  * Servlet implementation class DoctorAPI
  */
-@WebServlet("/PaymentAPI")
+@WebServlet("PaymentAPI")
 public class PaymentAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,6 +34,8 @@ public class PaymentAPI extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
+    //GET
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -42,6 +44,8 @@ public class PaymentAPI extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
+	//POST
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String result = payObj.insertPayment(request.getParameter("paymentId"), 
@@ -79,13 +83,13 @@ public class PaymentAPI extends HttpServlet {
 		return map;
 	}
 	
-	
+	//PUT
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
 		Map<String, String> param = getParasMap(request);
 		
-		String result = payObj.updatePayment(param.get("paymentId").toString(),
+		String result = payObj.updatePayment(param.get("hidPaymentIDSave").toString(),
 				param.get("patiName").toString().toString().replace("+", " "),   
 				param.get("docName").toString().toString().replace("+", " "),   
 		 		param.get("docCharges").toString(),        
@@ -99,12 +103,14 @@ public class PaymentAPI extends HttpServlet {
 	/**
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
+	
+	//DELETE
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
 		Map<String, String> param = getParasMap(request);
 		
-		String result = payObj.deleteAppointment(param.get("paymentId").toString());
+		String result = payObj.deletePayment(param.get("paymentId").toString());
 		
 		response.getWriter().write(result);
 	}

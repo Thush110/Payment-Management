@@ -18,46 +18,37 @@
 				<h1 class="m-3">Payment Management</h1>        
 				
 				<form id="formPayment" name="formPayment" method="post" action="payment.jsp">  
-					FullName:  
-					<input id="name" name="name" type="text" class="form-control form-control-sm">  
+					Doctor Name:  
+					<input id="docName" name="docName" type="text" class="form-control form-control-sm">  
 					
 					<br> 
-					Phone Number:  
-					<input id="mobile" name="mobile" type="text" class="form-control form-control-sm">  
+					Patient Name:  
+					<input id="patiName" name="patiName" type="text" class="form-control form-control-sm">  
 					
 					<br>
-					 Email:  
-					 <input id="email" name="email" type="text" class="form-control form-control-sm">  
+					 Doctor Charges:  
+					 <input id="docCharges" name="docCharges" type="text" class="form-control form-control-sm">  
 					 
 					 <br> 
-					 NIC:  
-					 <input id="nic" name="nic" type="text" class="form-control form-control-sm">  
+					 Booking Charges:  
+					 <input id="booknCharges" name="booknCharges" type="text" class="form-control form-control-sm">  
 					 
 					 <br> 
-					 Address:  
-					 <input id="address" name="address" type="text" class="form-control form-control-sm">  
+					 Hospital Charges:  
+					 <input id="hosptlCharges" name="hosptlCharges" type="text" class="form-control form-control-sm">  
 					 
 					 <br> 
-					 Date:  
-					 <input id="date" name="date" type="text" class="form-control form-control-sm"> 
+					 Pharmeasy Charges:  
+					 <input id="pharmeasyBill" name="pharmeasyBill" type="text" class="form-control form-control-sm"> 
 					 
 					 <br> 
-					 Hospital Name:  
-					 <input id="hospital" name="hospital" type="text" class="form-control form-control-sm">
-					 
-					 <br> 
-					 Doctor Name:  
-					 <input id="doctor" name="doctor" type="text" class="form-control form-control-sm">
-					 
-					 <br> 
-					 Message:  
-					 <input id="msg" name="msg" type="text" class="form-control form-control-sm">
+					
 
 					 
 					 
 					 <br>  
 					 <input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary">  
-					 <input type="hidden" id="hidAppIDSave" name="hidAppIDSave" value=""> 
+					 <input type="hidden" id="hidPaymentIDSave" name="hidPaymentIDSave" value=""> 
 					 
 				</form> 
 				

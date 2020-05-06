@@ -26,7 +26,7 @@ $(document).on("click", "#btnSave", function(event)
 	} 
 
 	// If valid------------------------  
-	var t = ($("#hidAppIDSave").val() == "") ? "POST" : "PUT";
+	var t = ($("#hidPaymentIDSave").val() == "") ? "POST" : "PUT";
 	
 	$.ajax(
 	{
@@ -64,23 +64,21 @@ function onHospitalSaveComplete(response, status){
 		$("#alertError").text("Unknown Error while Saving.");
 		$("#alertError").show();
 	}
-	$("#hidAppIDSave").val("");
+	$("#hidPaymentIDSave").val("");
 	$("#formPayment")[0].reset();
 }
 
 //UPDATE========================================== 
 $(document).on("click", ".btnUpdate", function(event) 
 		{     
-	$("#hidAppIDSave").val($(this).closest("tr").find('#hidAppIDUpdate').val());     
-	$("#name").val($(this).closest("tr").find('td:eq(0)').text());    
-	$("#mobile").val($(this).closest("tr").find('td:eq(1)').text());     
-	$("#email").val($(this).closest("tr").find('td:eq(2)').text());     
-	$("#nic").val($(this).closest("tr").find('td:eq(3)').text()); 
-	$("#address").val($(this).closest("tr").find('td:eq(4)').text()); 
-	$("#date").val($(this).closest("tr").find('td:eq(5)').text()); 
-	$("#hospital").val($(this).closest("tr").find('td:eq(6)').text()); 
-	$("#doctor").val($(this).closest("tr").find('td:eq(7)').text()); 
-	$("#msg").val($(this).closest("tr").find('td:eq(8)').text());
+	$("#hidPaymentIDSave").val($(this).closest("tr").find('#hidPaymentIDSave').val());     
+	$("#patiName").val($(this).closest("tr").find('td:eq(0)').text());    
+	$("#docName").val($(this).closest("tr").find('td:eq(1)').text());     
+	$("#docCharges").val($(this).closest("tr").find('td:eq(2)').text());     
+	$("#booknCharges").val($(this).closest("tr").find('td:eq(3)').text()); 
+	$("#hosptlChargesl").val($(this).closest("tr").find('td:eq(4)').text()); 
+	$("#pharmeasyBill").val($(this).closest("tr").find('td:eq(5)').text()); 
+	
 
 });
 
@@ -91,7 +89,7 @@ $(document).on("click", ".btnRemove", function(event){
 	{
 		url : "PaymentAPI",
 		type : "DELETE",
-		data : "appID=" + $(this).data("appid"),
+		data : "paymentId=" + $(this).data("paymentId"),
 		dataType : "text",
 		complete : function(response, status)
 		{
@@ -129,67 +127,45 @@ function onHospitalDeletedComplete(response, status)
 //CLIENTMODEL
 function validateHospitalForm() {  
 	// NAME  
-	if ($("#name").val().trim() == "")  {   
+	if ($("#patiName").val().trim() == "")  {   
 		return "Insert fullName.";  
 		
 	} 
 	
-	 // MOBILE  
-	if ($("#mobile").val().trim() == "")  {   
-		return "Insert Mobile.";  
+	 // DOCTOR  
+	if ($("#docName").val().trim() == "")  {   
+		return "Insert fullName.";  
 		
 	} 
 	 
-	 // is numerical value  
-	var tmpMobile = $("#mobile").val().trim();  
-	if (!$.isNumeric(tmpMobile))  {   
-		return "Insert a numerical value for Mobile Number.";  
+	 // Doctor Charges  
+	var docCharges = $("#docCharges").val().trim();  
+	if (!$.isDouble(docCharges))  {   
+		return "Insert a double value for Doctor Charges.";  
 		
 	}
 	 
-	 // Email 
-	if ($("#email").val().trim() == "")  {   
-		return "Insert Email.";  
+	 // Booking Charges  
+	var booknCharges = $("#booknCharges").val().trim();  
+	if (!$.isDouble(booknCharges))  {   
+		return "Insert a double value for Doctor Charges.";  
 		
-	} 
+	}
 	
-	// NIC  
-	if ($("#nic").val().trim() == "")  {   
-		return "Insert NIC.";  
+	// Hospital Charges  
+	var hosptlChargesl = $("#hosptlChargesl").val().trim();  
+	if (!$.isDouble(hosptlChargesl))  {   
+		return "Insert a double value for Hospital Charges .";  
+		
+	}
+	
+	// Pharmeasy Charges  
+	var pharmeasyBill = $("#pharmeasyBill").val().trim();  
+	if (!$.isDouble(pharmeasyBill))  {   
+		return "Insert a double value for Pharmeasy Charges .";  
 		
 	} 
 	 
-	 
-	
-	// Address  
-	if ($("#address").val().trim() == "")  {   
-		return "Insert address.";  
-		
-	} 
-	
-	// Date  
-	if ($("#date").val().trim() == "")  {   
-		return "Insert date.";  
-		
-	} 
-	
-	// HOSPITALname  
-	if ($("#hospital").val().trim() == "")  {   
-		return "Insert Hospital Name.";  
-		
-	} 
-	
-	// DocName  
-	if ($("#doctor").val().trim() == "")  {   
-		return "Insert Doctor Name.";  
-		
-	} 
-	
-	// Msg 
-	if ($("#msg").val().trim() == "")  {   
-		return "Insert Message.";  
-		
-	} 
 	 
 	 return true; 
 	 
