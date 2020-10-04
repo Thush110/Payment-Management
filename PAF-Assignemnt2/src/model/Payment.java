@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Payment {
+//main class
 
 	//A common method to connect to the DB 
 		private Connection connect() {
